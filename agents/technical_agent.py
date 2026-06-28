@@ -1,28 +1,31 @@
 """
 Technical Support Agent
 
-Handles application and software issues.
-
 Author : Vansh Anand
 """
+
+from rag.rag_pipeline import retrieve_context
+
 
 def technical_agent(state):
 
     query = state["user_query"]
 
-    response = f"""
+    # Retrieve relevant information from Technical Manual
+    context = retrieve_context(query)
+
+    # Store context in shared state
+    state["retrieved_context"] = context
+
+    # Department-specific response
+    response = """
 Technical Support
 
-Customer Query:
-{query}
+We have analyzed your issue.
 
-Suggested troubleshooting:
+Please follow the troubleshooting steps provided above.
 
-• Restart the application.
-• Check for software updates.
-• Verify your internet connection.
-
-The Technical Manual will provide detailed troubleshooting in the next stage.
+If the issue persists, contact our technical support team.
 """
 
     state["department_response"] = response

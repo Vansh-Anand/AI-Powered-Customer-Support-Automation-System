@@ -1,1 +1,15 @@
 # Technical Manual
+
+Common Troubleshooting Steps
+
+1. Restart the application.
+
+2. Check for software updates.
+
+3. Verify internet connectivity.
+
+4. Ensure sufficient disk space.
+
+5. Reinstall the application if the issue persists.
+
+6. Contact technical support if none of the above resolves the issue.
