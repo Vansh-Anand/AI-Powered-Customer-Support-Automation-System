@@ -19,14 +19,18 @@ def main():
     if "previous support issue" in query.lower():
         last_conv = get_last_conversation(customer_name)
         if last_conv:
-            print("\n-----------------------------------------")
+            print("=" * 50)
             print("Previous Support Issue")
-            print("-----------------------------------------")
-            print(f"Query: {last_conv[0]}")
-            print(f"Intent: {last_conv[1]}")
-            print(f"Department Response: {last_conv[2]}")
-            print(f"Final Response: {last_conv[3]}")
-            print(f"Timestamp: {last_conv[4]}")
+            print("=" * 50)
+
+            print(f"\nCustomer: {customer_name}")
+            print(f"\nPrevious Query:\n{last_conv[0]}")
+            print(f"\nDepartment: {last_conv[1]}")
+            print(f"\nDate: {last_conv[4]}")
+
+            print("\nSummary:")
+            print(f"Your previous support request was related to a {last_conv[1].lower()} issue.")
+
             print("\nThank you for contacting ABC Technologies.")
         else:
             print("\nNo previous support issues found.")
