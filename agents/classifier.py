@@ -43,6 +43,8 @@ Customer Query:
 
     intent = response.content.strip()
 
+    print(f"\nIntent Detected:\n{intent}")
+
     state["intent"] = intent
 
     return state

@@ -9,6 +9,15 @@ from agents.technical_agent import technical_agent
 from agents.billing_agent import billing_agent
 from agents.account_agent import account_agent
 
+from agents.approval_agent import approval_agent, human_approval
+from agents.supervisor import supervisor_agent
+
+
+def route_approval(state):
+    if state.get("approval_required"):
+        return "human"
+    return "supervisor"
+
 
 workflow = StateGraph(CustomerState)
 
@@ -18,6 +27,10 @@ workflow.add_node("sales", sales_agent)
 workflow.add_node("technical", technical_agent)
 workflow.add_node("billing", billing_agent)
 workflow.add_node("account", account_agent)
+
+workflow.add_node("approval", approval_agent)
+workflow.add_node("human", human_approval)
+workflow.add_node("supervisor", supervisor_agent)
 
 # Start
 workflow.add_edge(START, "classifier")
@@ -34,10 +47,21 @@ workflow.add_conditional_edges(
     },
 )
 
-# End
-workflow.add_edge("sales", END)
-workflow.add_edge("technical", END)
-workflow.add_edge("billing", END)
-workflow.add_edge("account", END)
+workflow.add_edge("sales", "approval")
+workflow.add_edge("technical", "approval")
+workflow.add_edge("billing", "approval")
+workflow.add_edge("account", "approval")
+
+workflow.add_conditional_edges(
+    "approval",
+    route_approval,
+    {
+        "human": "human",
+        "supervisor": "supervisor"
+    }
+)
+
+workflow.add_edge("human", "supervisor")
+workflow.add_edge("supervisor", END)
 
 customer_support_graph = workflow.compile()

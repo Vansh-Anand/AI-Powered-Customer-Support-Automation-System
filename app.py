@@ -3,12 +3,55 @@ AI-Powered Customer Support Automation System
 Author: Vansh Anand
 """
 
-def main():
-    print("=" * 60)
-    print("ABC Technologies Customer Support Automation")
-    print("=" * 60)
+from graph.workflow import customer_support_graph
+from memory.sqlite_memory import initialize_database, save_conversation, get_last_conversation
 
-    print("\nProject setup completed successfully.")
+def main():
+    initialize_database()
+
+    print("=" * 50)
+    print("ABC Technologies Customer Support System")
+    print("=" * 50)
+
+    customer_name = input("\nCustomer Name:\n").strip()
+    query = input("\nEnter your query:\n").strip()
+
+    if "previous support issue" in query.lower():
+        last_conv = get_last_conversation(customer_name)
+        if last_conv:
+            print("\n-----------------------------------------")
+            print("Previous Support Issue")
+            print("-----------------------------------------")
+            print(f"Query: {last_conv[0]}")
+            print(f"Intent: {last_conv[1]}")
+            print(f"Department Response: {last_conv[2]}")
+            print(f"Final Response: {last_conv[3]}")
+            print(f"Timestamp: {last_conv[4]}")
+            print("\nThank you for contacting ABC Technologies.")
+        else:
+            print("\nNo previous support issues found.")
+        return
+
+    initial_state = {
+        "customer_name": customer_name,
+        "user_query": query,
+        "intent": "",
+        "retrieved_context": "",
+        "department_response": "",
+        "final_response": "",
+        "approval_required": False,
+        "approval_status": False
+    }
+    
+    result = customer_support_graph.invoke(initial_state)
+
+    save_conversation(result)
+
+    print("\n-----------------------------------------")
+    print("Final Response")
+    print("-----------------------------------------")
+    print(result["final_response"])
+
 
 if __name__ == "__main__":
     main()
