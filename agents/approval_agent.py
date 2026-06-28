@@ -20,8 +20,6 @@ def approval_agent(state):
 
     query = state["user_query"].lower().strip()
 
-    print("Customer Query:", query)
-
     state["approval_required"] = any(
         keyword in query
         for keyword in HIGH_RISK_KEYWORDS

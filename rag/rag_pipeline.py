@@ -48,7 +48,7 @@ vector_store = create_vector_store()
 
 def retrieve_context(query):
 
-    results = vector_store.similarity_search(query, k=2)
+    results = vector_store.similarity_search(query, k=1)
 
     context = ""
 

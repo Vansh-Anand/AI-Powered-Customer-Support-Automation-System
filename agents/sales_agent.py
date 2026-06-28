@@ -15,12 +15,11 @@ def sales_agent(state):
 
     state["retrieved_context"] = context
 
-    response = f"""
+    response = """
 Sales Support
 
-Relevant Information
-
-{context}
+We provide three subscription plans.
+Please refer to the pricing guide above for complete details.
 """
 
     state["department_response"] = response
