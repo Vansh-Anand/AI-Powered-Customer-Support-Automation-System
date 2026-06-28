@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI-Powered Customer Support Automation System - Documentation Report</title>
+<style>
+    @page {
+        size: A4;
+        margin: 2.5cm;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 12pt;
+        line-height: 1.6;
+        color: #222;
+        margin: 0;
+        padding: 0;
+    }
+    .page-break {
+        page-break-before: always;
+    }
+
+    /* Cover Page */
+    .cover-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+        text-align: center;
+        padding: 2cm;
+    }
+    .cover-page h1 {
+        font-size: 28pt;
+        color: #1a237e;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+    .cover-page h2 {
+        font-size: 18pt;
+        color: #333;
+        margin-bottom: 40px;
+        font-weight: normal;
+    }
+    .cover-page h3 {
+        font-size: 14pt;
+        color: #555;
+        margin-bottom: 5px;
+        font-weight: normal;
+    }
+    .cover-page .course-info {
+        margin-top: 30px;
+        font-size: 14pt;
+        color: #444;
+    }
+    .cover-page .student-info {
+        margin-top: 40px;
+    }
+    .cover-page .student-info p {
+        margin: 5px 0;
+        font-size: 14pt;
+    }
+    .cover-page .student-name {
+        font-size: 20pt;
+        font-weight: bold;
+        color: #1a237e;
+    }
+    .cover-page .institution {
+        margin-top: 40px;
+        font-size: 16pt;
+        font-weight: bold;
+        color: #1a237e;
+    }
+    .cover-line {
+        width: 60%;
+        border: none;
+        border-top: 3px solid #1a237e;
+        margin: 20px auto;
+    }
+
+    /* Section Headers */
+    h1 {
+        font-size: 22pt;
+        color: #1a237e;
+        border-bottom: 2px solid #1a237e;
+        padding-bottom: 8px;
+        margin-top: 30px;
+    }
+    h2 {
+        font-size: 16pt;
+        color: #283593;
+        margin-top: 25px;
+    }
+    h3 {
+        font-size: 13pt;
+        color: #3949ab;
+        margin-top: 18px;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        font-size: 11pt;
+    }
+    th, td {
+        border: 1px solid #bbb;
+        padding: 10px 14px;
+        text-align: left;
+    }
+    th {
+        background-color: #1a237e;
+        color: white;
+        font-weight: bold;
+    }
+    tr:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+
+    /* Code blocks */
+    pre {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 12px;
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 10pt;
+        overflow-x: auto;
+        line-height: 1.4;
+    }
+    code {
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 10pt;
+        background-color: #f0f0f0;
+        padding: 1px 4px;
+        border-radius: 3px;
+    }
+
+    /* Workflow diagram box */
+    .workflow-box {
+        background-color: #e8eaf6;
+        border: 2px solid #3949ab;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px 0;
+        text-align: center;
+        font-family: 'Consolas', monospace;
+        font-size: 11pt;
+        line-height: 1.8;
+    }
+    .workflow-box .arrow {
+        color: #1a237e;
+        font-weight: bold;
+        font-size: 14pt;
+    }
+
+    /* TOC */
+    .toc-list {
+        list-style: none;
+        padding-left: 0;
+        font-size: 13pt;
+    }
+    .toc-list li {
+        padding: 6px 0;
+        border-bottom: 1px dotted #ccc;
+    }
+    .toc-list li span.num {
+        display: inline-block;
+        width: 30px;
+        font-weight: bold;
+        color: #1a237e;
+    }
+
+    /* Figure caption */
+    .figure-caption {
+        text-align: center;
+        font-style: italic;
+        color: #555;
+        margin-top: 8px;
+        font-size: 11pt;
+    }
+
+    /* Screenshot styling */
+    .screenshot-section {
+        margin: 15px 0;
+    }
+    .screenshot-section img {
+        max-width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 8px;
+    }
+
+    /* Folder structure */
+    .folder-structure {
+        background-color: #263238;
+        color: #eceff1;
+        padding: 15px 20px;
+        border-radius: 6px;
+        font-family: 'Consolas', monospace;
+        font-size: 10pt;
+        line-height: 1.6;
+    }
+
+    /* Status badge */
+    .status-completed {
+        color: #2e7d32;
+        font-weight: bold;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+    .workflow-img {
+        max-width: 100%;
+        max-height: 500px;
+        display: block;
+        margin: 15px auto;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    .workflow-img-small {
+        max-width: 100%;
+        max-height: 350px;
+        display: block;
+        margin: 15px auto;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER PAGE ===================== -->
+<div class="cover-page">
+    <h1>AI-Powered Customer Support<br>Automation System</h1>
+    <hr class="cover-line">
+    <h2>Documentation Report</h2>
+
+    <div class="course-info">
+        <p><strong>Course:</strong> Agentic AI</p>
+        <p><strong>Assignment 2</strong></p>
+    </div>
+
+    <div class="student-info">
+        <p>Submitted By</p>
+        <p class="student-name">Vansh Anand</p>
+        <br>
+        <p>Registration Number</p>
+        <p><strong>23MID0105</strong></p>
+    </div>
+
+    <p class="institution">VIT Vellore</p>
+</div>
+
+<!-- ===================== TABLE OF CONTENTS ===================== -->
+<div class="page-break"></div>
+<h1>Table of Contents</h1>
+<ol class="toc-list">
+    <li><span class="num">1.</span> Project Overview</li>
+    <li><span class="num">2.</span> System Architecture</li>
+    <li><span class="num">3.</span> Technology Stack</li>
+    <li><span class="num">4.</span> LangGraph Workflow</li>
+    <li><span class="num">5.</span> Module Description</li>
+    <li><span class="num">6.</span> RAG Pipeline</li>
+    <li><span class="num">7.</span> SQLite Memory</li>
+    <li><span class="num">8.</span> Human-in-the-Loop</li>
+    <li><span class="num">9.</span> Supervisor Agent</li>
+    <li><span class="num">10.</span> Task Completion</li>
+    <li><span class="num">11.</span> Installation</li>
+    <li><span class="num">12.</span> Sample Execution</li>
+    <li><span class="num">13.</span> Knowledge Base</li>
+    <li><span class="num">14.</span> Database Schema</li>
+    <li><span class="num">15.</span> Conclusion</li>
+</ol>
+
+<!-- ===================== 1. PROJECT OVERVIEW ===================== -->
+<div class="page-break"></div>
+<h1>1. Project Overview</h1>
+<p>
+This project presents an AI-Powered Customer Support Automation System developed using <strong>LangGraph</strong>, <strong>LangChain</strong>, <strong>Ollama (Llama 3.1)</strong>, <strong>SQLite</strong>, and <strong>Retrieval-Augmented Generation (RAG)</strong>. The system automates customer query handling through multiple specialized agents. It classifies customer intent, routes queries to the appropriate department, retrieves relevant information from company documents, stores conversation history using SQLite, supports memory recall, incorporates Human-in-the-Loop approval for high-risk requests, and validates responses through a Supervisor Agent before presenting the final response.
+</p>
+
+<h2>Core Capabilities</h2>
+<table>
+    <thead>
+        <tr><th>Capability</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Intent Classification</td><td>Classifies customer queries into Sales, Technical, Billing, or Account using Llama 3.1</td></tr>
+        <tr><td>Conditional Routing</td><td>Routes queries to specialized support agents based on detected intent</td></tr>
+        <tr><td>RAG Retrieval</td><td>Retrieves relevant information from the knowledge base using ChromaDB</td></tr>
+        <tr><td>Specialized Agents</td><td>Dedicated Sales, Technical, Billing, and Account support agents</td></tr>
+        <tr><td>SQLite Memory</td><td>Stores and recalls previous customer conversations</td></tr>
+        <tr><td>Human Approval</td><td>Requests supervisor approval for high-risk operations (refunds, cancellations)</td></tr>
+        <tr><td>Supervisor Agent</td><td>Reviews, validates, and improves generated responses before delivery</td></tr>
+        <tr><td>Final Response</td><td>Produces the validated, professional response for the customer</td></tr>
+    </tbody>
+</table>
+
+<!-- ===================== 2. SYSTEM ARCHITECTURE ===================== -->
+<div class="page-break"></div>
+<h1>2. System Architecture</h1>
+
+<p>The system follows a directed graph architecture implemented using LangGraph's <code>StateGraph</code>. Each node in the graph represents a processing stage, and edges define the flow of execution. The shared state (<code>CustomerState</code>) is passed through every node, accumulating information as the query progresses through the pipeline.</p>
+
+<div align="center">
+<img src="diagrams/workflowDiagram.png" alt="Workflow Diagram" width="420">
+</div>
+<p class="figure-caption">Figure 1: Overall LangGraph Workflow Architecture</p>
+
+<h2>Architecture Explanation</h2>
+<ul>
+    <li><strong>State Initialization:</strong> The workflow begins by initializing a <code>CustomerState</code> dictionary containing customer name, query, and empty fields for intent, context, responses, and approval flags.</li>
+    <li><strong>Memory Recall:</strong> If the customer asks about a previous support issue, the system queries SQLite directly and bypasses the LangGraph pipeline.</li>
+    <li><strong>Intent Classification:</strong> The customer query is sent to Ollama's Llama 3.1 model, which classifies it into one of four departments: Sales, Technical, Billing, or Account.</li>
+    <li><strong>Conditional Routing:</strong> Based on the classified intent, the query is routed to the appropriate specialized agent using LangGraph's <code>add_conditional_edges</code>.</li>
+    <li><strong>Specialized Agents:</strong> Each department agent processes the query and generates a department-specific response. Sales and Technical agents also retrieve RAG context.</li>
+    <li><strong>RAG Retrieval:</strong> Relevant information is retrieved from the ChromaDB vector store containing company documents.</li>
+    <li><strong>Human Approval:</strong> The approval agent checks for high-risk keywords. If found, the workflow routes to a human approval node where manual approval is required.</li>
+    <li><strong>Supervisor Agent:</strong> The supervisor validates the response, combines RAG context with the department response, and generates the final professional output.</li>
+    <li><strong>SQLite Storage:</strong> The complete conversation (query, intent, response, timestamp) is saved to SQLite for future recall.</li>
+    <li><strong>Final Response:</strong> The validated response is displayed to the customer.</li>
+</ul>
+
+<!-- ===================== 3. TECHNOLOGY STACK ===================== -->
+<div class="page-break"></div>
+<h1>3. Technology Stack</h1>
+<table>
+    <thead>
+        <tr><th>Component</th><th>Technology</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Programming Language</td><td>Python 3.13</td></tr>
+        <tr><td>Framework</td><td>LangGraph</td></tr>
+        <tr><td>AI Framework</td><td>LangChain</td></tr>
+        <tr><td>LLM</td><td>Ollama (Llama 3.1)</td></tr>
+        <tr><td>Embeddings</td><td>HuggingFace (all-MiniLM-L6-v2)</td></tr>
+        <tr><td>Vector Store</td><td>ChromaDB</td></tr>
+        <tr><td>Database</td><td>SQLite</td></tr>
+        <tr><td>IDE</td><td>Visual Studio Code</td></tr>
+    </tbody>
+</table>
+
+<!-- ===================== 4. LANGGRAPH WORKFLOW ===================== -->
+<h1>4. LangGraph Workflow</h1>
+
+<p>The LangGraph workflow is defined in <code>graph/workflow.py</code>. It connects all nodes into a single executable directed graph.</p>
+
+<div class="workflow-box">
+    <strong>START</strong><br>
+    <span class="arrow">↓</span><br>
+    <strong>Intent Classification</strong> (classifier.py)<br>
+    <span class="arrow">↓</span><br>
+    <strong>Conditional Routing</strong> (router.py)<br>
+    <span class="arrow">↓</span><br>
+    ┌─────────┬──────────┬──────────┬──────────┐<br>
+    <strong>Sales</strong> &nbsp;&nbsp;&nbsp; <strong>Technical</strong> &nbsp;&nbsp;&nbsp; <strong>Billing</strong> &nbsp;&nbsp;&nbsp; <strong>Account</strong><br>
+    └─────────┴──────────┴──────────┴──────────┘<br>
+    <span class="arrow">↓</span><br>
+    <strong>Approval Check</strong> (approval_agent.py)<br>
+    <span class="arrow">↓</span><br>
+    High Risk? → <strong>Yes</strong> → Human Approval<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>No</strong> → Skip<br>
+    <span class="arrow">↓</span><br>
+    <strong>Supervisor Agent</strong> (supervisor.py)<br>
+    <span class="arrow">↓</span><br>
+    <strong>END</strong>
+</div>
+
+<h2>Node Descriptions</h2>
+<table>
+    <thead>
+        <tr><th>Node</th><th>Function</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>classifier</td><td><code>classify_intent()</code></td><td>Uses Llama 3.1 to classify queries into Sales, Technical, Billing, or Account</td></tr>
+        <tr><td>sales</td><td><code>sales_agent()</code></td><td>Handles sales queries and retrieves pricing information via RAG</td></tr>
+        <tr><td>technical</td><td><code>technical_agent()</code></td><td>Handles technical issues and retrieves troubleshooting steps via RAG</td></tr>
+        <tr><td>billing</td><td><code>billing_agent()</code></td><td>Handles billing, invoice, and refund-related queries</td></tr>
+        <tr><td>account</td><td><code>account_agent()</code></td><td>Handles password resets and account management</td></tr>
+        <tr><td>approval</td><td><code>approval_agent()</code></td><td>Checks for high-risk keywords and flags requests requiring human approval</td></tr>
+        <tr><td>human</td><td><code>human_approval()</code></td><td>Prompts for manual approval/rejection of flagged requests</td></tr>
+        <tr><td>supervisor</td><td><code>supervisor_agent()</code></td><td>Validates response, combines RAG context, and generates final output</td></tr>
+    </tbody>
+</table>
+
+<!-- ===================== 5. MODULE DESCRIPTION ===================== -->
+<div class="page-break"></div>
+<h1>5. Module Description</h1>
+
+<h2>Project Structure</h2>
+<div class="folder-structure">
+CustomerSupportAutomation/<br>
+├── agents/<br>
+│&nbsp;&nbsp;&nbsp;├── classifier.py<br>
+│&nbsp;&nbsp;&nbsp;├── sales_agent.py<br>
+│&nbsp;&nbsp;&nbsp;├── technical_agent.py<br>
+│&nbsp;&nbsp;&nbsp;├── billing_agent.py<br>
+│&nbsp;&nbsp;&nbsp;├── account_agent.py<br>
+│&nbsp;&nbsp;&nbsp;├── approval_agent.py<br>
+│&nbsp;&nbsp;&nbsp;└── supervisor.py<br>
+├── graph/<br>
+│&nbsp;&nbsp;&nbsp;├── state.py<br>
+│&nbsp;&nbsp;&nbsp;├── router.py<br>
+│&nbsp;&nbsp;&nbsp;└── workflow.py<br>
+├── rag/<br>
+│&nbsp;&nbsp;&nbsp;├── loader.py<br>
+│&nbsp;&nbsp;&nbsp;└── rag_pipeline.py<br>
+├── memory/<br>
+│&nbsp;&nbsp;&nbsp;└── sqlite_memory.py<br>
+├── knowledge_base/<br>
+│&nbsp;&nbsp;&nbsp;├── company_policy.txt<br>
+│&nbsp;&nbsp;&nbsp;├── pricing_guide.txt<br>
+│&nbsp;&nbsp;&nbsp;├── technical_manual.txt<br>
+│&nbsp;&nbsp;&nbsp;└── faq_document.txt<br>
+├── database/<br>
+│&nbsp;&nbsp;&nbsp;└── customer_support.db<br>
+├── diagrams/<br>
+│&nbsp;&nbsp;&nbsp;└── workflowDiagram.png<br>
+├── app.py<br>
+├── README.md<br>
+├── requirements.txt<br>
+└── .gitignore
+</div>
+
+<h2>agents/ — Support Agent Modules</h2>
+<table>
+    <thead><tr><th>File</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr><td><code>classifier.py</code></td><td>Uses Ollama's Llama 3.1 model with zero temperature to classify the customer query into one of four intents: Sales, Technical, Billing, or Account.</td></tr>
+        <tr><td><code>sales_agent.py</code></td><td>Handles sales-related queries. Retrieves pricing information from the knowledge base using the RAG pipeline and generates a sales-focused response.</td></tr>
+        <tr><td><code>technical_agent.py</code></td><td>Handles technical issues. Retrieves troubleshooting steps from the technical manual via RAG and provides step-by-step guidance.</td></tr>
+        <tr><td><code>billing_agent.py</code></td><td>Handles invoices, payments, and refund-related queries. Flags refund requests for human approval.</td></tr>
+        <tr><td><code>account_agent.py</code></td><td>Handles password resets, profile management, and account-related operations securely.</td></tr>
+        <tr><td><code>approval_agent.py</code></td><td>Scans queries for high-risk keywords (refund, cancel, compensation, etc.) and flags them. Contains the <code>human_approval()</code> function for interactive approval.</td></tr>
+        <tr><td><code>supervisor.py</code></td><td>Final validation layer. Combines RAG context and department response into a professional final response. Handles approval rejection scenarios.</td></tr>
+    </tbody>
+</table>
+
+<h2>graph/ — Workflow Orchestration</h2>
+<table>
+    <thead><tr><th>File</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr><td><code>state.py</code></td><td>Defines <code>CustomerState</code> as a <code>TypedDict</code> with fields: customer_name, user_query, intent, retrieved_context, department_response, final_response, approval_required, and approval_status.</td></tr>
+        <tr><td><code>router.py</code></td><td>Contains the <code>route_query()</code> function that reads the classified intent and returns the corresponding agent node name for conditional routing.</td></tr>
+        <tr><td><code>workflow.py</code></td><td>Builds the complete <code>StateGraph</code>, registers all nodes, defines edges (including conditional edges for routing and approval), and compiles the executable graph.</td></tr>
+    </tbody>
+</table>
+
+<h2>rag/ — Retrieval-Augmented Generation</h2>
+<table>
+    <thead><tr><th>File</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr><td><code>loader.py</code></td><td>Loads all <code>.txt</code> files from the <code>knowledge_base/</code> directory using LangChain's <code>TextLoader</code>.</td></tr>
+        <tr><td><code>rag_pipeline.py</code></td><td>Creates a ChromaDB vector store from document chunks, uses HuggingFace embeddings (<code>all-MiniLM-L6-v2</code>), and provides the <code>retrieve_context()</code> function for similarity search.</td></tr>
+    </tbody>
+</table>
+
+<h2>memory/ — Conversation Persistence</h2>
+<table>
+    <thead><tr><th>File</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr><td><code>sqlite_memory.py</code></td><td>Manages SQLite database operations: <code>initialize_database()</code> creates the table, <code>save_conversation()</code> stores interactions, and <code>get_last_conversation()</code> retrieves the most recent conversation for a customer.</td></tr>
+    </tbody>
+</table>
+
+<h2>app.py — Main Application</h2>
+<p>The unified entry point that initializes the database, accepts customer input, checks for memory recall queries, executes the LangGraph workflow, saves the conversation to SQLite, and displays the final response.</p>
+
+<!-- ===================== 6. RAG PIPELINE ===================== -->
+<div class="page-break"></div>
+<h1>6. RAG Pipeline</h1>
+
+<p>The Retrieval-Augmented Generation (RAG) pipeline ensures that the system provides accurate, fact-based responses by retrieving relevant information from company documents before generating answers.</p>
+
+<h2>Pipeline Components</h2>
+<table>
+    <thead><tr><th>Component</th><th>Implementation</th></tr></thead>
+    <tbody>
+        <tr><td>Document Loader</td><td><code>TextLoader</code> from LangChain Community</td></tr>
+        <tr><td>Text Splitter</td><td><code>RecursiveCharacterTextSplitter</code> (chunk_size=500, overlap=50)</td></tr>
+        <tr><td>Embedding Model</td><td>HuggingFace <code>all-MiniLM-L6-v2</code></td></tr>
+        <tr><td>Vector Store</td><td>ChromaDB (persisted to <code>./database/chroma_db</code>)</td></tr>
+        <tr><td>Retrieval Method</td><td>Similarity Search (k=1)</td></tr>
+    </tbody>
+</table>
+
+<h2>How It Works</h2>
+<ol>
+    <li><strong>Loading:</strong> All <code>.txt</code> files from the <code>knowledge_base/</code> folder are loaded using <code>TextLoader</code>.</li>
+    <li><strong>Chunking:</strong> Documents are split into chunks of 500 characters with 50-character overlap using <code>RecursiveCharacterTextSplitter</code>.</li>
+    <li><strong>Embedding:</strong> Each chunk is converted into a vector representation using the HuggingFace <code>all-MiniLM-L6-v2</code> model.</li>
+    <li><strong>Storage:</strong> Vectors are stored in a ChromaDB vector store persisted on disk.</li>
+    <li><strong>Retrieval:</strong> When a query arrives, the system performs a similarity search to find the most relevant chunk (k=1) and returns it as context.</li>
+</ol>
+
+<h2>Knowledge Base Documents</h2>
+<table>
+    <thead><tr><th>Document</th><th>Content</th></tr></thead>
+    <tbody>
+        <tr><td><code>pricing_guide.txt</code></td><td>Subscription plans (Starter $10/month, Professional $30/month, Enterprise custom pricing) with features</td></tr>
+        <tr><td><code>technical_manual.txt</code></td><td>Common troubleshooting steps: restart, update, verify connectivity, check disk space, reinstall, contact support</td></tr>
+        <tr><td><code>company_policy.txt</code></td><td>Company policies and guidelines</td></tr>
+        <tr><td><code>faq_document.txt</code></td><td>Frequently asked questions and answers</td></tr>
+    </tbody>
+</table>
+
+<!-- ===================== 7. SQLITE MEMORY ===================== -->
+<h1>7. SQLite Memory</h1>
+
+<p>The system uses SQLite to persist every customer interaction, enabling conversation recall across sessions.</p>
+
+<h2>Features</h2>
+<ul>
+    <li><strong>Conversation Storage:</strong> Every interaction (query, intent, department response, final response) is automatically saved with a timestamp.</li>
+    <li><strong>Previous Issue Recall:</strong> When a customer asks "What was my previous support issue?", the system queries SQLite to retrieve the most recent conversation for that customer.</li>
+    <li><strong>Persistent Memory:</strong> Data is stored in <code>database/customer_support.db</code> and persists across application restarts.</li>
+</ul>
+
+<h2>Database Operations</h2>
+<table>
+    <thead><tr><th>Function</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr><td><code>initialize_database()</code></td><td>Creates the <code>conversation_history</code> table if it does not exist</td></tr>
+        <tr><td><code>save_conversation(state)</code></td><td>Inserts a new conversation record from the current state</td></tr>
+        <tr><td><code>get_last_conversation(name)</code></td><td>Retrieves the most recent conversation for a given customer name</td></tr>
+    </tbody>
+</table>
+
+<!-- ===================== 8. HUMAN-IN-THE-LOOP ===================== -->
+<div class="page-break"></div>
+<h1>8. Human-in-the-Loop</h1>
+
+<p>High-risk customer requests are not processed automatically. They require explicit human approval before the system proceeds.</p>
+
+<h2>High-Risk Keywords</h2>
+<table>
+    <thead><tr><th>Keyword</th><th>Scenario</th></tr></thead>
+    <tbody>
+        <tr><td><code>refund</code></td><td>Refund requests</td></tr>
+        <tr><td><code>cancel</code> / <code>cancellation</code></td><td>Subscription cancellation</td></tr>
+        <tr><td><code>account closure</code> / <code>close account</code></td><td>Account closure requests</td></tr>
+        <tr><td><code>compensation</code></td><td>Compensation requests</td></tr>
+        <tr><td><code>management</code></td><td>Escalation to management</td></tr>
+    </tbody>
+</table>
+
+<h2>Approval Workflow</h2>
+<div class="workflow-box">
+    <strong>Customer Query</strong><br>
+    <span class="arrow">↓</span><br>
+    <strong>Approval Check</strong> — Scan for high-risk keywords<br>
+    <span class="arrow">↓</span><br>
+    Approval Required?<br>
+    <span class="arrow">↓</span><br>
+    ┌───── <strong>Yes</strong> ─────┐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┌───── <strong>No</strong> ─────┐<br>
+    Human Approval &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Skip to Supervisor<br>
+    <span class="arrow">↓</span><br>
+    Approved / Rejected<br>
+    <span class="arrow">↓</span><br>
+    <strong>Supervisor Agent</strong><br>
+    <span class="arrow">↓</span><br>
+    <strong>Final Response</strong>
+</div>
+
+<p>If the request is <strong>approved</strong>, the Supervisor Agent generates the final response normally. If the request is <strong>rejected</strong>, the Supervisor Agent returns a rejection message: <em>"Your request cannot be processed because it was not approved by the supervisor."</em></p>
+
+<!-- ===================== 9. SUPERVISOR AGENT ===================== -->
+<h1>9. Supervisor Agent</h1>
+
+<p>The Supervisor Agent is the final validation layer before any response reaches the customer.</p>
+
+<h2>Responsibilities</h2>
+<ul>
+    <li><strong>Response Validation:</strong> Checks whether human approval was required and whether it was granted or rejected.</li>
+    <li><strong>Context Integration:</strong> If RAG context was retrieved, it is formatted and prepended to the response under "Relevant Information".</li>
+    <li><strong>Professional Formatting:</strong> The department response is formatted under "Support Response" with clear section separators.</li>
+    <li><strong>Final Response Generation:</strong> Appends a professional closing message: "Thank you for contacting ABC Technologies."</li>
+</ul>
+
+<h2>Output Structure</h2>
+<pre>
+Relevant Information
+----------------------------------------
+[Retrieved RAG Context]
+
+Support Response
+----------------------------------------
+[Department Agent Response]
+
+Thank you for contacting ABC Technologies.
+</pre>
+
+<!-- ===================== 10. TASK COMPLETION ===================== -->
+<div class="page-break"></div>
+<h1>10. Task Completion</h1>
+<table>
+    <thead><tr><th>Task</th><th>Description</th><th>Status</th></tr></thead>
+    <tbody>
+        <tr><td>Task 1</td><td>Project Setup and Initial Configuration</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 2</td><td>State Structure (CustomerState TypedDict)</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 3</td><td>Intent Classification using Llama 3.1</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 4</td><td>Conditional Routing with LangGraph</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 5</td><td>Specialized Support Agents</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 6</td><td>RAG Pipeline (ChromaDB + HuggingFace)</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 7</td><td>SQLite Conversation Memory</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 8</td><td>Human-in-the-Loop Approval</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 9</td><td>Supervisor Agent</td><td class="status-completed">✅ Completed</td></tr>
+        <tr><td>Task 10</td><td>Complete System Integration and Demonstration</td><td class="status-completed">✅ Completed</td></tr>
+    </tbody>
+</table>
+
+<!-- ===================== 11. INSTALLATION ===================== -->
+<h1>11. Installation</h1>
+
+<h2>Prerequisites</h2>
+<ul>
+    <li>Python 3.11 or higher</li>
+    <li>Ollama installed with Llama 3.1 model pulled</li>
+    <li>Git</li>
+</ul>
+
+<h2>Setup Steps</h2>
+<p><strong>Step 1:</strong> Clone the repository</p>
+<pre>git clone https://github.com/Vansh-Anand/AI-Powered-Customer-Support-Automation-System.git
+cd CustomerSupportAutomation</pre>
+
+<p><strong>Step 2:</strong> Create a virtual environment</p>
+<pre>python -m venv venv
+venv\Scripts\activate</pre>
+
+<p><strong>Step 3:</strong> Install dependencies</p>
+<pre>pip install -r requirements.txt</pre>
+
+<p><strong>Step 4:</strong> Ensure Ollama is running</p>
+<pre>ollama pull llama3.1</pre>
+
+<p><strong>Step 5:</strong> Run the application</p>
+<pre>python app.py</pre>
+
+<!-- ===================== 12. SAMPLE EXECUTION ===================== -->
+<div class="page-break"></div>
+<h1>12. Sample Execution</h1>
+
+<h2>Query 1 — Sales (Pricing Plans)</h2>
+<p><strong>Input:</strong> <em>"What are the pricing plans available for your software?"</em></p>
+<p>The system classifies the intent as <strong>Sales</strong>, retrieves pricing information from the knowledge base via RAG, and presents the Starter, Professional, and Enterprise plans to the customer.</p>
+<div align="center"><img src="execution_screenshots/16_Query1_Sales.png" alt="Query 1 Sales" width="500"></div>
+
+<h2>Query 2 — Account (Password Reset)</h2>
+<p><strong>Input:</strong> <em>"I forgot my account password."</em></p>
+<p>The system classifies the intent as <strong>Account</strong> and routes the query to the Account Agent, which provides guidance on password reset and profile management.</p>
+<div align="center"><img src="execution_screenshots/17_Query2_Account.png" alt="Query 2 Account" width="500"></div>
+
+<h2>Query 3 — Technical (Application Crash)</h2>
+<p><strong>Input:</strong> <em>"My application crashes whenever I upload a file."</em></p>
+<p>The system classifies the intent as <strong>Technical</strong>, retrieves troubleshooting steps from the technical manual via RAG, and provides step-by-step resolution guidance.</p>
+<div align="center"><img src="execution_screenshots/18_Query3_Technical.png" alt="Query 3 Technical" width="500"></div>
+
+<h2>Query 4 — Billing with Human Approval (Refund)</h2>
+<p><strong>Input:</strong> <em>"I need a refund for my annual subscription."</em></p>
+<p>The system classifies the intent as <strong>Billing</strong>, detects the high-risk keyword "refund", and triggers the Human-in-the-Loop approval workflow. The supervisor processes the approved request.</p>
+<div align="center"><img src="execution_screenshots/19_Query4_Refund.png" alt="Query 4 Refund" width="500"></div>
+
+<h2>Query 5 — Memory Recall (Previous Issue)</h2>
+<p><strong>Input:</strong> <em>"What was my previous support issue?"</em></p>
+<p>The system queries the SQLite database for the customer's most recent interaction and displays the previous query, department, date, and a summary.</p>
+<div align="center"><img src="execution_screenshots/20_Query5_Memory.png" alt="Query 5 Memory" width="500"></div>
+
+<!-- ===================== 13. KNOWLEDGE BASE ===================== -->
+<div class="page-break"></div>
+<h1>13. Knowledge Base</h1>
+
+<p>The knowledge base consists of four text documents stored in the <code>knowledge_base/</code> directory. These documents are loaded, chunked, embedded, and stored in the ChromaDB vector store for retrieval.</p>
+
+<table>
+    <thead><tr><th>File</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr><td><code>company_policy.txt</code></td><td>Contains company policies, guidelines, and operational procedures for ABC Technologies.</td></tr>
+        <tr><td><code>pricing_guide.txt</code></td><td>Lists subscription plans with pricing and features: Starter ($10/month, 1 user), Professional ($30/month, 5 users), and Enterprise (custom pricing, unlimited users).</td></tr>
+        <tr><td><code>technical_manual.txt</code></td><td>Provides common troubleshooting steps: restart, update, connectivity check, disk space verification, reinstallation, and escalation to technical support.</td></tr>
+        <tr><td><code>faq_document.txt</code></td><td>Contains frequently asked questions and their answers for quick customer reference.</td></tr>
+    </tbody>
+</table>
+
+<!-- ===================== 14. DATABASE SCHEMA ===================== -->
+<h1>14. Database Schema</h1>
+
+<p>The project uses a single SQLite database file: <code>database/customer_support.db</code></p>
+
+<h2>Table: conversation_history</h2>
+<table>
+    <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr><td><code>id</code></td><td>INTEGER PRIMARY KEY AUTOINCREMENT</td><td>Unique identifier for each conversation</td></tr>
+        <tr><td><code>customer_name</code></td><td>TEXT</td><td>Name of the customer</td></tr>
+        <tr><td><code>user_query</code></td><td>TEXT</td><td>The original customer query</td></tr>
+        <tr><td><code>intent</code></td><td>TEXT</td><td>Classified intent (Sales, Technical, Billing, Account)</td></tr>
+        <tr><td><code>department_response</code></td><td>TEXT</td><td>Response generated by the department agent</td></tr>
+        <tr><td><code>final_response</code></td><td>TEXT</td><td>Validated final response from the Supervisor Agent</td></tr>
+        <tr><td><code>timestamp</code></td><td>DATETIME</td><td>Auto-generated timestamp (DEFAULT CURRENT_TIMESTAMP)</td></tr>
+    </tbody>
+</table>
+
+<h2>SQL Schema</h2>
+<pre>CREATE TABLE IF NOT EXISTS conversation_history(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_name TEXT,
+    user_query TEXT,
+    intent TEXT,
+    department_response TEXT,
+    final_response TEXT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);</pre>
+
+<!-- ===================== 15. CONCLUSION ===================== -->
+<div class="page-break"></div>
+<h1>15. Conclusion</h1>
+
+<p>This project demonstrates a complete, end-to-end AI-Powered Customer Support Automation System that integrates multiple modern AI and software engineering concepts:</p>
+
+<ul>
+    <li><strong>LangGraph Workflow:</strong> A directed graph architecture that orchestrates the entire customer support pipeline through well-defined nodes and edges.</li>
+    <li><strong>Specialized Support Agents:</strong> Four dedicated agents (Sales, Technical, Billing, Account) that handle domain-specific customer queries with tailored responses.</li>
+    <li><strong>RAG-Based Information Retrieval:</strong> A Retrieval-Augmented Generation pipeline using ChromaDB and HuggingFace embeddings that grounds responses in actual company documents, ensuring accuracy and relevance.</li>
+    <li><strong>SQLite Conversation Memory:</strong> Persistent storage of every customer interaction, enabling the system to recall previous support issues across sessions.</li>
+    <li><strong>Human-in-the-Loop Approval:</strong> A safety mechanism that flags high-risk requests (refunds, cancellations, account closures) for manual human review before processing.</li>
+    <li><strong>Supervisor Validation:</strong> A final quality assurance layer that validates, formats, and professionally presents the response before delivery to the customer.</li>
+    <li><strong>End-to-End Automation:</strong> A unified <code>app.py</code> entry point that seamlessly executes the complete workflow from customer input to final response, demonstrating production-ready system integration.</li>
+</ul>
+
+<p>The system successfully handles all five demonstration queries, covering sales inquiries, account management, technical support, billing with human approval, and memory recall — showcasing the full capabilities of the platform.</p>
+
+<br><br>
+<hr>
+<p style="text-align: center; color: #777; font-size: 10pt;">
+    AI-Powered Customer Support Automation System — Vansh Anand (23MID0105) — VIT Vellore
+</p>
+
+</body>
+</html>
