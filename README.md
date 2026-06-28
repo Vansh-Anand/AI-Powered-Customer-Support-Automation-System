@@ -53,7 +53,7 @@ CustomerSupportAutomation/
 ├── knowledge_base/
 ├── execution_screenshots/
 ├── diagrams/
-│   └── workflowDiagram.png
+│   └── Workflow_Diagram.png
 ├── app.py
 ├── README.md
 ├── requirements.txt
@@ -64,7 +64,7 @@ CustomerSupportAutomation/
 
 ## Workflow Diagram
 
-![Workflow Diagram](diagrams/workflowDiagram.png)
+![Workflow Diagram](diagrams/Workflow_Diagram.png)
 
 ---
 
