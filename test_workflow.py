@@ -1,11 +1,10 @@
 from graph.workflow import customer_support_graph
 
 queries = [
-    "I forgot my account password.",
     "What are your pricing plans?",
-    "My app crashes",
-    "I need a refund",
-    "I forgot my password"
+    "My application crashes while uploading files.",
+    "I need a refund.",
+    "I forgot my account password."
 ]
 
 for query in queries:
@@ -24,6 +23,6 @@ for query in queries:
     
     print("-" * 40)
     print(f"Query: {query}")
-    print(f"Detected Intent: {result['intent']}")
-    print(f"Department Response: {result['department_response']}")
+    print(f"Detected Intent:\n{result['intent']}")
+    print(f"\nDepartment Response:\n{result['department_response'].strip()}")
 print("-" * 40)

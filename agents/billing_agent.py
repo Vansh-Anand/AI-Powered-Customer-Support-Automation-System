@@ -1,12 +1,26 @@
 """
 Billing Support Agent
-Author: Vansh Anand
+
+Handles invoices, payments and refund requests.
+
+Author : Vansh Anand
 """
 
 def billing_agent(state):
 
-    state["department_response"] = (
-        "Billing Team: Your billing request has been received."
-    )
+    query = state["user_query"]
+
+    response = f"""
+Billing Support
+
+Customer Query:
+{query}
+
+Your billing request has been received.
+
+If this request involves a refund, supervisor approval may be required.
+"""
+
+    state["department_response"] = response
 
     return state

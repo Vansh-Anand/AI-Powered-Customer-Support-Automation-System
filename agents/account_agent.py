@@ -1,12 +1,26 @@
 """
 Account Support Agent
-Author: Vansh Anand
+
+Handles password reset and account management.
+
+Author : Vansh Anand
 """
 
 def account_agent(state):
 
-    state["department_response"] = (
-        "Account Team: Your account request is being processed."
-    )
+    query = state["user_query"]
+
+    response = f"""
+Account Support
+
+Customer Query:
+{query}
+
+Your account-related request has been received.
+
+Password reset and profile management will be processed securely.
+"""
+
+    state["department_response"] = response
 
     return state
