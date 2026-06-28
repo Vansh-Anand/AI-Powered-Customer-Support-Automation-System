@@ -1,44 +1,31 @@
 """
 approval_agent.py
 
-Checks whether human approval is required.
-
 Author : Vansh Anand
 """
 
 
 HIGH_RISK_KEYWORDS = [
-
     "refund",
-
     "cancel",
-
     "cancellation",
-
     "account closure",
-
     "close account",
-
     "compensation",
-
     "management"
-
 ]
 
 
 def approval_agent(state):
 
-    query = state["user_query"].lower()
+    query = state["user_query"].lower().strip()
 
-    state["approval_required"] = False
+    print("Customer Query:", query)
 
-    for word in HIGH_RISK_KEYWORDS:
-
-        if word in query:
-
-            state["approval_required"] = True
-
-            break
+    state["approval_required"] = any(
+        keyword in query
+        for keyword in HIGH_RISK_KEYWORDS
+    )
 
     return state
 
