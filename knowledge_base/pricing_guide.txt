@@ -1,1 +1,13 @@
 # Pricing Guide
+
+Starter Plan
+Price: $10/month
+Features: Basic support, 1 user
+
+Professional Plan
+Price: $30/month
+Features: Priority support, 5 users
+
+Enterprise Plan
+Price: Contact sales for pricing
+Features: 24/7 support, unlimited users

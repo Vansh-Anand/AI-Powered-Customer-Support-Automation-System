@@ -1,28 +1,26 @@
 """
 Sales Support Agent
 
-Handles product, pricing and subscription queries.
-
 Author : Vansh Anand
 """
+
+from rag.rag_pipeline import retrieve_context
+
 
 def sales_agent(state):
 
     query = state["user_query"]
 
+    context = retrieve_context(query)
+
+    state["retrieved_context"] = context
+
     response = f"""
 Sales Support
 
-Customer Query:
-{query}
+Relevant Information
 
-We provide three subscription plans:
-
-1. Starter Plan
-2. Professional Plan
-3. Enterprise Plan
-
-Detailed pricing will be retrieved from the Pricing Guide in the next stage.
+{context}
 """
 
     state["department_response"] = response

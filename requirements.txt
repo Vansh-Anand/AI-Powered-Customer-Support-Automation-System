@@ -10,3 +10,4 @@ unstructured
 python-dotenv
 sqlite-utils
 tqdm
+langchain-chroma
